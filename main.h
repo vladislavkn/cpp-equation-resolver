@@ -16,10 +16,10 @@ using namespace std;
 #include "includes/formatio.cpp" 
 
 // Enchanters
-#include "internals/apply_signs.cpp"
-#include "internals/move_tokens_left.cpp"
-// #include "internals/apply_powers.cpp"
-// #include "internals/apply_multiplication.cpp"
+#include "internals/enchanters/apply_signs.cpp"
+#include "internals/enchanters/move_tokens_left.cpp"
+// #include "internals/enchanters/apply_powers.cpp"
+// #include "internals/enchanters/apply_multiplication.cpp"
 
 // Internals
 #include "internals/tokenize.cpp"
