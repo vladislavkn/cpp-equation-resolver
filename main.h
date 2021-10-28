@@ -15,10 +15,22 @@ using namespace std;
 // Local includes
 #include "includes/formatio.cpp" 
 
-// Internals
-#include "internals/tokenize.cpp"
+// Enchanters
 #include "internals/apply_signs.cpp"
 #include "internals/move_tokens_left.cpp"
+// #include "internals/apply_powers.cpp"
+// #include "internals/apply_multiplication.cpp"
 
-#include "internals/analyze.cpp"
-#include "internals/resolve.cpp"
+// Internals
+#include "internals/tokenize.cpp"
+//#include "internals/resolve.cpp"
+
+/*
+	1) tokenize
+	2) apply_signs
+	3) apply_powers
+	4) apply_multiplication
+	5) move_tokens_left 
+	6) resolve 
+*/
+

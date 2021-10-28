@@ -2,8 +2,8 @@
 
 string compile_string(string s) {
 	vector<token> tokens = tokenize(s);
-	tokens = apply_signs(tokens);
-	tokens = move_tokens_left(tokens);
+	tokens = apply_signs(tokens); 
+	tokens = move_tokens_left(tokens); 
 	
 	for(token t: tokens) {
 		t.print_repr();
