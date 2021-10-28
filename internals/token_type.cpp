@@ -37,3 +37,7 @@ struct token {
 bool is_tokentype_sign(token t) {
 	return t.type == ADD || t.type == SUBSTITUTE;
 }
+
+bool is_tokentype_operation(token t) {
+	return t.type == MULTIPLY || t.type == POWER;
+}
