@@ -67,7 +67,7 @@ string __resolve_variant_1(map<float, float> hashmap) {
 	
 	if (variable_power < 1) {
 		result = pow((-hashmap[0]), 1/variable_power);
-		if(((int)Math.ceil(1/variable_power) % 2 == 0) && ((-hashmap[0]) < 0)) return "No x was found (x^2n<0 error)";
+//		if(((int)Math.ceil(1/variable_power) % 2 == 0) && ((-hashmap[0]) < 0)) return "No x was found (x^2n<0 error)";
 		return "x = " + to_string(result);
 	}
 	

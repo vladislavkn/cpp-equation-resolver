@@ -1,11 +1,16 @@
-#include "main.h"
-using namespace std;
+#include "main.h" 
 
 string compile_string(string s) {
-	vector<token> tokens = analyze(move_left(tokenize(s)));
-	map<float, float> hashmap = build_hashmap(tokens);
+	vector<token> tokens = tokenize(s);
+	tokens = apply_signs(tokens);
+	tokens = move_tokens_left(tokens);
 	
-	return resolve(hashmap);
+	for(token t: tokens) {
+		t.print_repr();
+	}
+//	map<float, float> hashmap = build_hashmap(tokens);
+		return "empty";
+//	return resolve(hashmap);
 }
 
 int main() {
