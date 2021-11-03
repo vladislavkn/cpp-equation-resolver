@@ -24,6 +24,7 @@ using namespace std;
 
 // Internals
 #include "internals/tokenize.cpp"
+#include "internals/validate.cpp"
 //#include "internals/resolve.cpp"
  
 

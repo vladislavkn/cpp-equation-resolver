@@ -1,7 +1,11 @@
 #include "main.h" 
 
 string compile_string(string s) {
-	vector<token> tokens = tokenize(s);
+	int error_index = validate_string(s);
+	if(error_index != -1) return "String validation error at index " + to_string(error_index);
+	
+	vector<token> tokens = tokenize(s); 
+	
 	tokens = apply_signs(tokens); 
 	tokens = move_tokens_left(tokens); 
 	tokens = apply_powers(tokens);
