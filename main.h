@@ -18,7 +18,7 @@ using namespace std;
 // Enchanters
 #include "internals/enchanters/apply_signs.cpp"
 #include "internals/enchanters/move_tokens_left.cpp"
-// #include "internals/enchanters/apply_powers.cpp"
+#include "internals/enchanters/apply_powers.cpp"
 // #include "internals/enchanters/apply_multiplication.cpp"
 
 // Internals

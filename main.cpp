@@ -4,13 +4,11 @@ string compile_string(string s) {
 	vector<token> tokens = tokenize(s);
 	tokens = apply_signs(tokens); 
 	tokens = move_tokens_left(tokens); 
+	tokens = apply_powers(tokens);
 	
-	for(token t: tokens) {
-		t.print_repr();
-	}
-//	map<float, float> hashmap = build_hashmap(tokens);
-		return "empty";
-//	return resolve(hashmap);
+	for(token t: tokens)	t.print_repr();
+	
+	return "empty";
 }
 
 int main() {
