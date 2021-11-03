@@ -13,12 +13,6 @@ struct token {
 	TOKEN_TYPE type;
 	float value=1;
 	float power=1;
-	static token make(TOKEN_TYPE _type=TOKEN_TYPE::VOID, float _value=1) {
-		token t;
-		t.value = _value;
-		t.type = _type;
-		return t;
-	}
 	void print_repr() {
 	  string type_name;
 		if(type == ADD)cout << "ADD";
@@ -41,3 +35,11 @@ bool is_tokentype_sign(token t) {
 bool is_tokentype_operation(token t) {
 	return t.type == MULTIPLY || t.type == POWER;
 }
+
+token make_token(TOKEN_TYPE _type=TOKEN_TYPE::VOID, float _value=1) {
+	token t;
+	t.value = _value;
+	t.type = _type;
+	t.power =  (_type == VARIABLE) ? 1 : 0;
+	return t;
+	}

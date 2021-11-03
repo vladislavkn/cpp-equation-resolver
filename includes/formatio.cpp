@@ -10,9 +10,4 @@ void start_group(string name) {
 	for(int i = 0; i < segment_size; i++) cout << "=";
 	if(name.length() % 2 == 1) cout << "=";
 	cout << "\n";
-}
-
-void end_group() { 
-	for(int i = 0; i < __group_divider_width; i++) cout << "=";
-	cout << "\n";
-}
+} 

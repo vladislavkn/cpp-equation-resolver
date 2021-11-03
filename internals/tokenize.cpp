@@ -30,16 +30,16 @@ vector<token> tokenize(string s) {
 	for(int i = 0; i < s.length(); i++) {
 		token t;
 		if(is_operator(s[i])) {
-			if(s[i] == '+') t = token::make(ADD);
-			if(s[i] == '-') t = token::make(SUBSTITUTE);
-			if(s[i] == '*') t = token::make(MULTIPLY);
-			if(s[i] == '^') t = token::make(POWER); 
-			if(s[i] == '=') t = token::make(EQUALS); 
+			if(s[i] == '+') t = make_token(ADD);
+			if(s[i] == '-') t = make_token(SUBSTITUTE);
+			if(s[i] == '*') t = make_token(MULTIPLY);
+			if(s[i] == '^') t = make_token(POWER); 
+			if(s[i] == '=') t = make_token(EQUALS); 
 		} else if(is_digit(s[i])) {
-			t = token::make(NUMBER, pull_number(s, i));
+			t = make_token(NUMBER, pull_number(s, i));
 		 	i -= 1;
 		} else if(s[i] == 'x') {
-			t = token::make(VARIABLE);
+			t = make_token(VARIABLE);
 		}
 		
 		tokens.push_back(t);

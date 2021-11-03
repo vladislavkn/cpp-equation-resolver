@@ -19,18 +19,11 @@ using namespace std;
 #include "internals/enchanters/apply_signs.cpp"
 #include "internals/enchanters/move_tokens_left.cpp"
 #include "internals/enchanters/apply_powers.cpp"
-// #include "internals/enchanters/apply_multiplication.cpp"
+#include "internals/enchanters/apply_multiplications.cpp"
+#include "internals/enchanters/create_tokens_map.cpp"
 
 // Internals
 #include "internals/tokenize.cpp"
 //#include "internals/resolve.cpp"
-
-/*
-	1) tokenize
-	2) apply_signs
-	3) apply_powers
-	4) apply_multiplication
-	5) move_tokens_left 
-	6) resolve 
-*/
+ 
 
