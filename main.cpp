@@ -1,6 +1,7 @@
 #include "main.h" 
 
 string compile_string(string s) {
+	LOG start_group(s);
 	int error_index = validate_string(s);
 	if(error_index != -1) return "String validation error at index " + to_string(error_index);
 	
@@ -21,6 +22,7 @@ string compile_string(string s) {
 	LOG for(float value: results) cout << value << ' ';
 	LOG cout << endl;
 	
+	LOG start_group("RESULT"); 
 	if(results.size() == 0) return "No roots";
 	
 	string stringified_results;
@@ -32,11 +34,11 @@ int main() {
 	ifstream infile("./io/input.txt");
 	ofstream outfile("./io/output.txt");
 	string s;
+	
 	while(getline(infile, s))	{
-		LOG start_group(s);
 		s = compile_string(s);
-		LOG start_group("RESULT");
-		LOG	cout << s << endl; 
+		LOG	cout << s << endl;
 		outfile << s << endl;
 	}
+	printf("Resolving completed\n");
 }

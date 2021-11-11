@@ -18,6 +18,7 @@ using namespace std;
 #include "includes/formatio.cpp" 
 #include "includes/map_has_key.cpp" 
 #include "includes/ftos.cpp"
+#include "includes/get_sign.cpp"
 
 // Enchanters
 #include "internals/enchanters/apply_signs.cpp"
@@ -29,6 +30,7 @@ using namespace std;
 // Resolvers
 #include "internals/resolvers/resolve_power1_0.cpp"
 #include "internals/resolvers/resolve_power2_0.cpp"
+#include "internals/resolvers/resolve_power2_1.cpp"
 
 // Internals
 #include "internals/tokenize.cpp"
