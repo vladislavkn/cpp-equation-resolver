@@ -6,8 +6,8 @@
 - [x] Добавить энчантер apply_powers
 - [x] Добавить энчантер apply_multiplications
 - [x] Добавить энчантер simplify
-- [ ] Добавить резолвер resolve_power1_0
-- [ ] Добавить резолвер resolve_power2_0
+- [x] Добавить резолвер resolve_power1_0
+- [x] Добавить резолвер resolve_power2_0
 - [ ] Добавить резолвер resolve_power2_1
 - [ ] Добавить резолвер resolve_power2_1_0
 - [x] Добавить валидатор
