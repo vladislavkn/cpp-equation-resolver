@@ -13,10 +13,12 @@ int validate_string(string s) {
 	for(int i = 0; i < s.length(); i++) {
 		if(!__is_char_acceptable(s[i])) return i;
 		
+		// Validate first symbol
 		if(i == 0) {
-			if((s[i] == '.') || (s[i] == '=')) return i;
+			if(!__is_char_digit(s[i]) && (s[i] != 'x')) return i;
 		}
 		
+		// Validate middle symbols
 		if((i > 0) && i < (s.length() - 1)) {
 			if((s[i] == '.') && !(__is_char_digit(s[i-1]) || __is_char_digit(s[i+1]))) return i;
 			if(((s[i] == '*') || (s[i] == '^')) && (s[i+1] == '*' || s[i+1] == '^')) return i;
@@ -28,18 +30,12 @@ int validate_string(string s) {
 			if(s[i] == '^' && (!__is_char_digit(s[i+1]))) return i;
 		}
 		
+		// Validate last symbol
 		if(i == (s.length() - 1)) {
-			if((s[i] == '.') || (s[i] == '=')) return i;
+			if(!__is_char_digit(s[i]) && (s[i] != 'x')) return i;
 		}
 	}
 	
+	// Validation passed
 	return -1;
 }
-
-//bool validate_tokens(vector<token> tokens) {
-//	for(int i = 1; i < tokens.size(); i++) { 
-//		// No validation rules
-//	}
-//	
-//	return true;
-//} 
