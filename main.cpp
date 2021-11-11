@@ -21,7 +21,11 @@ string compile_string(string s) {
 	LOG for(float value: results) cout << value << ' ';
 	LOG cout << endl;
 	
-	return "empty";
+	if(results.size() == 0) return "No roots";
+	
+	string stringified_results;
+	for(float value: results) stringified_results += "x=" + ftos(value) + "; ";
+	return stringified_results;
 }
 
 int main() {

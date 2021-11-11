@@ -9,13 +9,15 @@ using namespace std;
 #include <map>
 #include <string>
 #include <cmath> 
+#include <sstream>
 
 // Local types
 #include "internals/token_type.cpp"
 
 // Local includes
 #include "includes/formatio.cpp" 
-#include "includes/maputils.cpp" 
+#include "includes/map_has_key.cpp" 
+#include "includes/ftos.cpp"
 
 // Enchanters
 #include "internals/enchanters/apply_signs.cpp"
@@ -26,6 +28,7 @@ using namespace std;
 
 // Resolvers
 #include "internals/resolvers/resolve_power1_0.cpp"
+#include "internals/resolvers/resolve_power2_0.cpp"
 
 // Internals
 #include "internals/tokenize.cpp"
