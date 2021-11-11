@@ -10,11 +10,16 @@ string compile_string(string s) {
 	tokens = move_tokens_left(tokens); 
 	tokens = apply_powers(tokens);
 	tokens = apply_multiplications(tokens);
-	for(token t: tokens)	t.print_repr();
+	LOG for(token t: tokens) t.print_repr();
 	
 	map<float, float> tokens_map = create_tokens_map(tokens);
-	start_group("TOKENS MAP");
-	print_tokens_map(tokens_map);
+	LOG start_group("TOKENS MAP");
+	LOG print_tokens_map(tokens_map);
+	
+	vector<float> results = resolve(tokens_map);
+	LOG start_group("RESOLVE");
+	LOG for(float value: results) cout << value << ' ';
+	LOG cout << endl;
 	
 	return "empty";
 }
@@ -24,12 +29,10 @@ int main() {
 	ofstream outfile("./io/output.txt");
 	string s;
 	while(getline(infile, s))	{
-		if(ENABLE_LOGGING) start_group(s);
+		LOG start_group(s);
 		s = compile_string(s);
-		if(ENABLE_LOGGING) {
-			start_group("RESULT");
-			cout << s << endl; 
-		}
+		LOG start_group("RESULT");
+		LOG	cout << s << endl; 
 		outfile << s << endl;
 	}
 }

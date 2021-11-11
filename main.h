@@ -1,4 +1,5 @@
 #define ENABLE_LOGGING true
+#define LOG if(ENABLE_LOGGING)
 using namespace std;
 
 // Standart includes
@@ -14,6 +15,7 @@ using namespace std;
 
 // Local includes
 #include "includes/formatio.cpp" 
+#include "includes/maputils.cpp" 
 
 // Enchanters
 #include "internals/enchanters/apply_signs.cpp"
@@ -22,9 +24,12 @@ using namespace std;
 #include "internals/enchanters/apply_multiplications.cpp"
 #include "internals/enchanters/create_tokens_map.cpp"
 
+// Resolvers
+#include "internals/resolvers/resolve_power1_0.cpp"
+
 // Internals
 #include "internals/tokenize.cpp"
 #include "internals/validate.cpp"
-//#include "internals/resolve.cpp"
+#include "internals/resolve.cpp"
  
 
