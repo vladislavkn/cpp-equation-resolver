@@ -32,19 +32,20 @@ string compile_string(string s) {
 	if(results.size() == 0) return "No roots";
 	
 	string stringified_results;
-	for(float value: results) stringified_results += "x=" + ftos(value) + "; ";
+	for(float value: results) stringified_results += "x=" + ntos(value) + "; ";
 	return stringified_results;
 }
 
 int main() {
 	ifstream infile("./io/input.txt");
 	ofstream outfile("./io/output.txt");
-	string s;
+	string s, result_string;
+	int line_number = 1;
 	
 	while(getline(infile, s))	{
-		s = compile_string(s);
-		LOG	cout << s << endl;
-		outfile << s << endl;
+		result_string = ntos(line_number++) + ") " + compile_string(s);
+		LOG	cout << result_string << endl;
+		outfile << result_string << endl;
 	}
 	printf("Resolving completed\n");
 }

@@ -17,7 +17,7 @@ using namespace std;
 // Local includes
 #include "includes/formatio.cpp" 
 #include "includes/map_has_key.cpp" 
-#include "includes/ftos.cpp"
+#include "includes/ntos.cpp"
 #include "includes/get_sign.cpp"
 
 // Enchanters
@@ -31,6 +31,7 @@ using namespace std;
 #include "internals/resolvers/resolve_power1_0.cpp"
 #include "internals/resolvers/resolve_power2_0.cpp"
 #include "internals/resolvers/resolve_power2_1.cpp"
+#include "internals/resolvers/resolve_power2_1_0.cpp"
 
 // Internals
 #include "internals/tokenize.cpp"
