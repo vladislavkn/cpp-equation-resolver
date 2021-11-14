@@ -1,5 +1,7 @@
-#define ENABLE_LOGGING true
-#define LOG if(ENABLE_LOGGING)
+#define LOG_PRIMARY true
+#define LOG_DETAILS true
+#define LOG if(LOG_PRIMARY)
+#define DET if(LOG_DETAILS)
 using namespace std;
 
 // Standart includes
@@ -10,6 +12,7 @@ using namespace std;
 #include <string>
 #include <cmath> 
 #include <sstream>
+#include <functional>
 
 // Local types
 #include "internals/token_type.cpp"

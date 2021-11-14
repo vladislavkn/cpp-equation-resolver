@@ -7,13 +7,15 @@ vector<float> resolve_power2_1_0(map<float, float> tokens_map) {
 	if(discriminant < 0) return vector<float>();
 	
 	vector<float> roots = __get_roots_by_Vietas(tokens_map);
-	LOG cout << "Roots by Vieta''s theoreme: ";
-	LOG for(float r: roots) cout << r << " ";
+	DET cout << "Roots by Vieta's theoreme: ";
+	DET for(float r: roots) cout << r << " ";
+	DET cout << endl;
 	if(roots.size() > 0) return roots;
 	
 	roots = __get_roots_by_discriminant(tokens_map, discriminant);
-	LOG cout << "Roots by discriminant: ";
-	LOG for(float r: roots) cout << r << " ";
+	DET cout << "Roots by discriminant: ";
+	DET for(float r: roots) cout << r << " ";
+	DET cout << endl;
 	return roots;
 }
 
@@ -30,9 +32,14 @@ float __get_discriminant(map<float, float> tokens_map) {
 
 vector<float> __get_roots_by_Vietas(map<float, float> tokens_map) {
 	float p = -tokens_map[1], q = tokens_map[0]; // x1*x2 = q; x1+x2 = p;
-		
-	for(float x1 = -p, x2; x1 < 2 * p; x1 += 1) {
+	DET cout << "p=" << p << "; q=" << q << endl;
+	 
+	function<bool(float x)> condition = [p](float x) { return p > 0 ? (x <= 2 * p) : (x >= 2 * p); };
+	function<float(float x)> step = [p](float x) { return p > 0 ? (x+1) : (x-1); };
+	 
+	for(float x1 = -p, x2; condition(x1); x1 = step(x1)) {
 		x2 = p - x1;
+		DET cout << "Try Vieta's: " << x1 << ' ' << x2 << endl;
 		if(x1 * x2 == q) {
 			vector<float> roots {x1, x2};
 			return roots;
