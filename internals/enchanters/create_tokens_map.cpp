@@ -10,6 +10,6 @@ map<float, float> create_tokens_map(vector<token> tokens) {
 	return tokens_map;
 }
 
-void print_tokens_map(map<float, float> tokens_map) {
-	for(auto p: tokens_map)	cout << p.first << ": " << p.second << endl;
+void print_tokens_map(map<float, float> tokens_map, string prefix="") {
+	for(auto p: tokens_map)	cout << prefix << p.first << ": " << p.second << endl;
 }

@@ -1,6 +1,6 @@
 vector<float> resolve_power2_0(map<float, float> tokens_map) {
 	float predicat = -tokens_map[0]/tokens_map[2];
-	if(predicat) return vector<float>(); 
+	if(predicat < 0) return vector<float>(); 
 	vector<float> results { sqrt(predicat), -sqrt(predicat) };
 	
 	return results;

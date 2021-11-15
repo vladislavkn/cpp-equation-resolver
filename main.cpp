@@ -1,7 +1,7 @@
 #include "main.h" 
 
 string compile_string(string s) {
-	LOG start_group(s);
+	LOG print_header(s);
 	// Validate string
 	int error_index = validate_string(s);
 	if(error_index != -1) return "String validation error at index " + to_string(error_index);
@@ -14,21 +14,21 @@ string compile_string(string s) {
 	tokens = move_tokens_left(tokens); 
 	tokens = apply_powers(tokens);
 	tokens = apply_multiplications(tokens);
-	LOG for(token t: tokens) t.print_repr();
+	DET print_title("TOKENS LIST");
+	DET for(token t: tokens) t.print_repr("\t");
 	
 	// Convert tokens to hashmap
+	LOG print_title("TOKENS MAP");
 	map<float, float> tokens_map = create_tokens_map(tokens);
-	LOG start_group("TOKENS MAP");
-	LOG print_tokens_map(tokens_map);
+	LOG print_tokens_map(tokens_map, "\t");
 	
 	// Resolve the equation
+	LOG print_title("RESOLVE");
 	vector<float> results = resolve(tokens_map);
-	LOG start_group("RESOLVE");
-	LOG for(float value: results) cout << value << ' ';
-	LOG cout << endl;
+	DET print_results(results, "\t");
 	
 	// Return stringified results
-	LOG start_group("RESULT"); 
+	DET print_title("RESULT"); 
 	if(results.size() == 0) return "No roots";
 	
 	string stringified_results;
@@ -44,8 +44,8 @@ int main() {
 	
 	while(getline(infile, s))	{
 		result_string = ntos(line_number++) + ") " + compile_string(s);
-		LOG	cout << result_string << endl;
+		LOG	print_row(result_string);
 		outfile << result_string << endl;
 	}
-	printf("Resolving completed\n");
+	print_header("Resolving completed");
 }

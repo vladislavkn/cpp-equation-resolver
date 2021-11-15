@@ -13,8 +13,9 @@ struct token {
 	TOKEN_TYPE type;
 	float value=1;
 	float power=1;
-	void print_repr() {
+	void print_repr(string prefix="") {
 	  string type_name;
+	  cout << prefix;
 		if(type == ADD)cout << "ADD";
 		if(type == SUBSTITUTE) cout << "SUBSTITUTE";
 		if(type == MULTIPLY) cout << "MULTIPLY";
