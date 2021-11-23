@@ -2,6 +2,7 @@
 
 string compile_string(string s) {
 	LOG print_header(s);
+	
 	// Validate string
 	int error_index = validate_string(s);
 	if(error_index != -1) return "String validation error at index " + to_string(error_index);
@@ -37,11 +38,15 @@ string compile_string(string s) {
 }
 
 int main() {
+	// Setup file refs
 	ifstream infile("./io/input.txt");
 	ofstream outfile("./io/output.txt");
+	
+	// String compiling runtime variables
 	string s, result_string;
 	int line_number = 1;
 	
+	// Parse  file line by line and save results
 	while(getline(infile, s))	{
 		result_string = ntos(line_number++) + ") " + compile_string(s);
 		LOG	print_row(result_string);

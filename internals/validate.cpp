@@ -1,4 +1,5 @@
 string __acceptable_chars = "x.,0123456789+-*^=";
+
 bool __is_char_acceptable(char c) {
 	for(int i = 0; i < __acceptable_chars.length(); i++)
 		if(c == __acceptable_chars[i]) return true;

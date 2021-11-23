@@ -43,4 +43,4 @@ token make_token(TOKEN_TYPE _type=TOKEN_TYPE::VOID, float _value=1) {
 	t.type = _type;
 	t.power =  (_type == VARIABLE) ? 1 : 0;
 	return t;
-	}
+}

@@ -1,6 +1,7 @@
 float __get_discriminant(map<float, float> tokens_map);
 vector<float> __get_roots_by_Vietas(map<float, float> tokens_map);
 vector<float> __get_roots_by_discriminant(map<float, float> tokens_map, float discriminant);
+float const ACCURACY = (float) 1 / pow(10, 8);
 
 vector<float> resolve_power2_1_0(map<float, float> tokens_map) {
 	float discriminant = __get_discriminant(tokens_map);
@@ -27,18 +28,51 @@ float __get_discriminant(map<float, float> tokens_map) {
 }
 
 vector<float> __get_roots_by_Vietas(map<float, float> tokens_map) {
-	float p = -tokens_map[1], q = tokens_map[0]; // x1*x2 = q; x1+x2 = p;
+	float p = -tokens_map[1]/tokens_map[2], q = tokens_map[0]/tokens_map[2]; // x1*x2 = q; x1+x2 = p;
+	float last_diff = 0, diff = 0, fault_range = 0;
+	int stage_level = 0, direction = 1;
 	DET cout << '\t' << "p=" << p << "; q=" << q << endl;
 	 
-	function<bool(float x)> condition = [p](float x) { return p > 0 ? (x <= 2 * p) : (x >= 2 * p); };
-	function<float(float x)> step = [p](float x) { return p > 0 ? (x+1) : (x-1); };
+	// Step value or fault range for current step
+	auto get_fault_range = [](float stage_level) {
+		return (float) 1 / pow(10, stage_level);  
+	};
+	auto condition = [p](float x, int direction) {
+		return (p * direction) > 0 ? (x <= 2 * p + 1) : (x >= 2 * p - 1); 
+	};
+	auto get_step = [p](float addition, int direction) { 
+		return (p * direction) > 0 ? addition : -addition;
+	}; 
+	
 	 
-	for(float x1 = -p, x2; condition(x1); x1 = step(x1)) {
+	for(float x1 = -p, x2; condition(x1, direction); x1 += get_step(get_fault_range(stage_level), direction)) {
 		x2 = p - x1;
-		DET cout << '\t' << "Try Vieta's: " << x1 << ' ' << x2 << endl;
-		if(x1 * x2 == q) {
-			vector<float> roots {x1, x2};
-			return roots;
+		fault_range = get_fault_range(stage_level);
+		DET cout << '\t' << "Try Vieta's: stage:" << ((float) 1 / pow(10, stage_level)) << " x1:" << x1 << " x2:" << x2 << " qx:" << (x1 * x2) << " diff:" << abs(x1 * x2 - q) << " last:" << last_diff << " pass:" << (abs(x1 * x2 - q) < ACCURACY) << endl;
+		
+		// Get diff
+		diff = abs(x1 * x2 - q);
+		
+		if((diff > last_diff) && (last_diff != 0)) {
+			DET print_title("Set direction to " + to_string(-direction) + " and stage_level to " + to_string(stage_level));
+			direction = -direction;
+			stage_level += 1;
+			last_diff = 0;
+		} else if((diff < fault_range) && (diff < abs(q))) { 
+			// If we've reached max level of cpp accuracy, return result 
+			if((stage_level > 8) || (abs(x1 * x2 - q) < ACCURACY)) {
+				vector<float> roots {x1, x2};
+				return roots;
+			}
+			
+			// Else fallback for 1 step
+			x1 -= get_step(fault_range, direction); 
+			// Update step value modifier 
+			stage_level += 1; 
+			DET print_title("Set stage_level to " + to_string(stage_level)); 
+			last_diff = 0;
+		} else {
+			last_diff = diff;
 		}
 	}
 	

@@ -12,6 +12,7 @@ bool is_operator(char c) {
 	return c == '+' || c == '-' || c == '*' || c == '=' || c == '^';	
 }
 
+// Pull number from a string and update current symbol index
 float pull_number(string s, int& i) {
 	float number = 0;
 	bool has_point = false;
@@ -25,6 +26,7 @@ float pull_number(string s, int& i) {
 	return number / pow(10, offset);
 }
 
+// Process string to tokens 
 vector<token> tokenize(string s) {
 	vector<token> tokens;
 	for(int i = 0; i < s.length(); i++) {
