@@ -47,17 +47,20 @@ vector<float> __get_roots_by_Vietas(map<float, float> tokens_map) {
 	 
 	for(float x1 = -p, x2; condition(x1, direction); x1 += get_step(get_fault_range(stage_level), direction)) {
 		x2 = p - x1;
+		// Get fault range for current step
 		fault_range = get_fault_range(stage_level);
 		DET cout << '\t' << "Try Vieta's: stage:" << ((float) 1 / pow(10, stage_level)) << " x1:" << x1 << " x2:" << x2 << " qx:" << (x1 * x2) << " diff:" << abs(x1 * x2 - q) << " last:" << last_diff << " pass:" << (abs(x1 * x2 - q) < ACCURACY) << endl;
 		
 		// Get diff
 		diff = abs(x1 * x2 - q);
 		
+		// If diff is growing, we change the direction
 		if((diff > last_diff) && (last_diff != 0)) {
 			DET print_title("Set direction to " + to_string(-direction) + " and stage_level to " + to_string(stage_level));
 			direction = -direction;
 			stage_level += 1;
-			last_diff = 0;
+			last_diff = 0; // Set last_diff to 0 to prevent direction changing
+		// If we reached enough accuracy for that step, update step value
 		} else if((diff < fault_range) && (diff < abs(q))) { 
 			// If we've reached max level of cpp accuracy, return result 
 			if((stage_level > 8) || (abs(x1 * x2 - q) < ACCURACY)) {
@@ -70,9 +73,9 @@ vector<float> __get_roots_by_Vietas(map<float, float> tokens_map) {
 			// Update step value modifier 
 			stage_level += 1; 
 			DET print_title("Set stage_level to " + to_string(stage_level)); 
-			last_diff = 0;
+			last_diff = 0; // Set last_diff to 0 to prevent direction changing
 		} else {
-			last_diff = diff;
+			last_diff = diff; // Update last diff to detect whether we should to change the direction
 		}
 	}
 	
